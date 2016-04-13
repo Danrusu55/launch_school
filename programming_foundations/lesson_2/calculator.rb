@@ -16,6 +16,19 @@ def valid_number?(num)
   num.to_i != 0
 end
 
+def operator_to_string(op)
+  case op
+  when '1'
+    "adding"
+  when '2'
+    "subtracting"
+  when '3'
+    "multiplying"
+  when '4'
+    "dividing"
+  end
+end
+
 prompt("Welcome to the Calculator! Please enter your name.")
 
 name = ""
@@ -58,17 +71,27 @@ loop do
     end
   end
 
-  prompt("What operation would you like to perform? 1) add 2) subtract 3) multiply 4) divide")
+  operator_prompt = <<-MSG 
+  What operation would you like to perform? 
+    1 - add
+    2 - subtract 
+    3 - multiply 
+    4 - divide
+  MSG
+
+  prompt(operator_prompt)
 
   operator = ""
   loop do
     operator = Kernel.gets().chomp()
-    if (operator.to_i >= 1 && operator.to_i <= 4)
+    if %w(1 2 3 4).include?(operator)
       break
     else
       prompt("Try inputing: 1 - to add, 2 - to subtract, 3 - to multiply, 4 - to divide.")
     end
   end
+
+  prompt("#{operator_to_string(operator)} your two numbers . . .")
 
   result = case operator.to_i
             when 1
