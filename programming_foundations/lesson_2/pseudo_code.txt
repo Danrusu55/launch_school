@@ -1,0 +1,28 @@
+# 1. a method that returns the sum of two integers
+
+# START
+# GET first number from user
+# GET second number from number
+# Add the two numbers together as integers
+# PRINT the result
+# END
+
+# 2. a method that takes an array of strings,
+# and returns a string that is all those strings
+# concatenated together
+
+# START
+# SET result of method
+# READ iterate throught the array of strings
+# adding each element of the array into the result
+# END
+
+# 3. a method that takes and array of integers,
+# and returns a new array with every other element.
+
+# START
+# SET result of method
+# READ iterate through the array
+# ignore every second result
+# add the other elements to the result
+# END
