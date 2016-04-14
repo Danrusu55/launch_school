@@ -31,3 +31,5 @@ loop do
 end
 
 prompt "Thank you for using the loan calculator."
+
+# Add demo of pull request for github practice
