@@ -1,34 +1,33 @@
 # loan_calculator.rb
 
-loop do
-
-  puts "Enter the amount you would like to borrow."
-  loan_amount = gets.chomp.to_f
-
-  puts "Enter the interest rate (5% = 5)."
-  interest_rate = gets.chomp.to_f/100
-
-  puts "Enter the length of your loan in months."
-  loan_time = gets.chomp.to_i
-
-  puts "Working out the monthly repayments on a $#{loan_amount},"
-  puts "paid over #{loan_time} months at #{interest_rate}% interest."
-
-  monthly_repayments = loan_amount * ( interest_rate * ( ( 1 + interest_rate ) ** interest_rate ) ) / 
-  ( ( ( ( 1 + interest_rate ) ** interest_rate ) - 1 ) )
-
-  puts "Your monthly repayments will be #{monthly_repayments},"
-  puts "for a period of #{loan_time} months."
-  puts "Total amount to be repaid will be #{monthly_repayments * loan_time}."
-
-  puts "Would you like to make another calculation."
-  puts "Make your seleciton (y - yes or n - no)?"
-
-  selection = ''
-  unless selection.downcase = 'y'
-    break
-  end
-
+def prompt(message)
+  puts "=> #{message}"
 end
 
-puts "Thank you for using the loan calculator."
+loop do
+  prompt "Enter the amount you would like to borrow."
+  loan_amount = gets.chomp.to_f
+
+  prompt "Enter the interest rate (5% = 5)."
+  monthly_interest_rate = (gets.chomp.to_f / 100) / 12.0
+
+  prompt "Enter the length of your loan in months."
+  loan_time = gets.chomp.to_i
+
+  prompt "Working out the monthly repayments on a $#{loan_amount},"
+  prompt "paid over #{loan_time} months at #{monthly_interest_rate}% monthly interest rate."
+
+  monthly_repayments = loan_amount * (monthly_interest_rate * ((1 +  monthly_interest_rate)**loan_time)) / ((((1 + monthly_interest_rate)**loan_time) - 1))
+
+  prompt "Your monthly repayments will be #{monthly_repayments},"
+  prompt "for a period of #{loan_time} months."
+  prompt "Total amount to be repaid will be #{monthly_repayments * loan_time}."
+
+  prompt "Would you like to make another calculation."
+  prompt "Make your selection (y - yes or n - no)?"
+
+  selection = gets.chomp
+  break if selection.casecmp != 'y'
+end
+
+prompt "Thank you for using the loan calculator."
