@@ -198,6 +198,33 @@ loop do
     # output board to screen
     build_board(board_hash)
 
+    # Player two has turn
+    puts "Computer's turn . . ."
+    loop do
+      col_row = computers_turn(board_hash)
+      break if check_input_valid(col_row, board_hash)
+    end
+
+    # Put player two on the board
+    board_hash[col_row.to_sym] = 'o'
+
+    # Check for winner
+    # If winner break
+    if check_winner(board_hash, 'o')
+      build_board(board_hash)
+      puts "computer won!!"
+      break
+
+    end
+    # Check for draw
+    if check_draw(board_hash)
+      build_board(board_hash)
+      puts "It is a draw . . ."
+      break
+    end
+
+    build_board(board_hash)
+
     # Human has turn
     puts "Human please take a turn."
     puts "Please chose column & row (from a1 to c3)."
@@ -220,32 +247,6 @@ loop do
       puts "You won!!"
       break
     end
-
-    # Check for draw
-    if check_draw(board_hash)
-      build_board(board_hash)
-      puts "It is a draw . . ."
-      break
-    end
-    
-    # Computer has turn
-    puts "Computer's turn . . ."
-    loop do
-      col_row = computers_turn(board_hash)
-      break if check_input_valid(col_row, board_hash)
-    end
-
-    # Put player two on the board
-    board_hash[col_row.to_sym] = 'o'
-
-    # Check for winner
-    # If winner break
-    if check_winner(board_hash, 'o')
-      build_board(board_hash)
-      puts "computer won!!"
-      break
-    end
-
   end
   # END LOOP here
 
