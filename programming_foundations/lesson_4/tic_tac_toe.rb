@@ -44,7 +44,7 @@ def check_draw(board_hash)
   true
 end
 
-def computers_turn
+def computers_turn_random
   computers_choice = rand(1..9)
   case computers_choice
   when 1
@@ -112,7 +112,7 @@ loop do
     # Player two has turn
     puts "Computer's turn . . ."
     loop do
-      col_row = computers_turn
+      col_row = computers_turn_random
       break if check_input_valid(col_row, board_hash)
     end
 
