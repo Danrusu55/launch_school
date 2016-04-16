@@ -72,15 +72,49 @@ end
 
 
 def check_winner(board_hash, player)
-  # win = false
-  # board_hash.each do |cols, rows|
-  #   win = true unless board_hash[cols][rows] != player
-  #   return win if win == true
-  #   rows.each do |row, value|
-  #     win = true unless value != player
-  #   end
-  #   return win if win == true
-  # end
+  # Check column for winner
+  board_hash.each do |cols, rows|
+    col_occupied = 0
+    1.upto(9) do |row| 
+      if board_hash[cols][row] == player
+        col_occupied += 1
+      end
+    end
+    return true if col_occupied == 9
+  end
+  # Check row for winner
+  row_01_occupied = 0
+  row_02_occupied = 0
+  row_03_occupied = 0
+  row_04_occupied = 0
+  row_05_occupied = 0
+  row_06_occupied = 0
+  row_07_occupied = 0
+  row_08_occupied = 0
+  row_09_occupied = 0
+  board_hash.each do |cols, _|
+    puts "Checked #{cols} column for #{player}"
+    if board_hash[cols][1] == player then row_01_occupied += 1
+    elsif board_hash[cols][2] == player then row_02_occupied += 1
+    elsif board_hash[cols][3] == player then row_03_occupied += 1
+    elsif board_hash[cols][4] == player then row_04_occupied += 1
+    elsif board_hash[cols][5] == player then row_05_occupied += 1
+    elsif board_hash[cols][6] == player then row_06_occupied += 1
+    elsif board_hash[cols][7] == player then row_07_occupied += 1
+    elsif board_hash[cols][8] == player then row_08_occupied += 1
+    elsif board_hash[cols][9] == player then row_09_occupied += 1
+    end
+  end
+  puts "Row 1 has #{row_01_occupied} occupied columns"
+  return true if row_01_occupied == 9
+  return true if row_02_occupied == 9
+  return true if row_03_occupied == 9
+  return true if row_04_occupied == 9
+  return true if row_05_occupied == 9
+  return true if row_06_occupied == 9
+  return true if row_07_occupied == 9
+  return true if row_08_occupied == 9
+  return true if row_09_occupied == 9
   false
 end
 
@@ -97,26 +131,27 @@ def check_input_valid(col_move, row_move, board_hash)
 end
 
 def check_draw(board_hash)
-  # board_hash.each do |_, v|
-  #   return false if v == ' '
-  # end
-  # true
-  false
+  board_hash.each do |cols, _|
+    1.upto(9) do |row|
+      return false if board_hash[cols][row] == ' '
+    end
+  end
+  true
 end
 
-def computers_turn(board_hash)
-  #inspect board
-  if board_hash[:b2] == ' '
-    puts "computer takes the middle"
-    return 'b2'
-  end
-  computer_move = computers_intelligent_move(board_hash)
-  puts "computer intelligent move: #{computer_move}"
-  if computer_move != ' '
-    return computer_move
-  end
-  computers_turn_random
-end
+# def computers_turn(board_hash)
+#   #inspect board
+#   if board_hash[:b2] == ' '
+#     puts "computer takes the middle"
+#     return 'b2'
+#   end
+#   computer_move = computers_intelligent_move(board_hash)
+#   puts "computer intelligent move: #{computer_move}"
+#   if computer_move != ' '
+#     return computer_move
+#   end
+#   computers_turn_random
+# end
 
 human_score = 0
 computer_score = 0
@@ -177,10 +212,10 @@ board_hash = { 'a' => { 1=> ' ', 2 => ' ', 3 => ' ', 4 => ' ', 5 => ' ', 6 => ' 
 
     # Computer has turn
     puts "Computer's turn . . ."
-    # loop do
+    loop do
       computer_move = computers_turn_random
-      # break if check_input_valid(col, row, board_hash)
-    # end
+      break if check_input_valid(computer_move[0], computer_move[1], board_hash)
+    end
 
     # Put player two on the board
     board_hash[computer_move[0]][computer_move[1]] = 'o'
