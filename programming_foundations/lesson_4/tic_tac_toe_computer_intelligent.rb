@@ -14,6 +14,14 @@ def build_board(board_hash)
   puts "\n"
 end
 
+def build_score_board(score_01, score_02)
+  puts "\n"
+  puts " Human  |  Computer"
+  puts "--------------------"
+  puts "   #{score_01}    |    #{score_02}"
+  puts "\n"
+end
+
 # check that the col_row is a key
 # check that the selected key is not occupied
 # if meets both conditions return true, otherwise return false
@@ -187,6 +195,9 @@ def computers_turn(board_hash)
   computers_turn_random
 end
 
+human_score = 0
+computer_score = 0
+
 # LOOP here
 loop do
   # Build empty board
@@ -197,6 +208,7 @@ loop do
   loop do
     # output board to screen
     build_board(board_hash)
+    build_score_board(human_score, computer_score)
 
     # Human has turn
     puts "Human please take a turn."
@@ -218,6 +230,7 @@ loop do
     if check_winner(board_hash, 'x')
       build_board(board_hash)
       puts "You won!!"
+      human_score += 1
       break
     end
 
@@ -227,7 +240,7 @@ loop do
       puts "It is a draw . . ."
       break
     end
-    
+
     # Computer has turn
     puts "Computer's turn . . ."
     loop do
@@ -243,6 +256,7 @@ loop do
     if check_winner(board_hash, 'o')
       build_board(board_hash)
       puts "computer won!!"
+      computer_score += 1
       break
     end
 
