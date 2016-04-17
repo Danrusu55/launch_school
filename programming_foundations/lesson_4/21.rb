@@ -126,9 +126,16 @@ def players_turn(dealer, player)
   end
 end
 
+dealer_money = 21
+player_money = 21
 loop do
   dealer = []
   player = []
+  puts "\n => Dealer has $#{dealer_money}"
+  puts " => Player has $#{player_money}\n\n"
+  if dealer_money <= 0 || player_money <= 0
+    break
+  end
 
   # Get dealer cards
   dealer << deal_card
@@ -138,7 +145,11 @@ loop do
   player << deal_card
   print_line
   # Players hand
-  next if players_turn(dealer, player) == 'player_bust'
+  if players_turn(dealer, player) == 'player_bust'
+    player_money -= 3
+    dealer_money += 3
+    next
+  end
   # Dealers hand
   dealers_turn(dealer, player)
   # Get the scores and work out the winner
@@ -150,12 +161,20 @@ loop do
   puts "\nDEALER'S HAND #{dealer_score}"
   print_hand(dealer)
   # Work out the winner
-  if player_score <= 21 && player_score >= dealer_score
+  if player_score <= 21 && player_score > dealer_score
     puts "\nPlayer wins!"
+    player_money += 3
+    dealer_money -= 3
   elsif dealer_score <= 21
     puts "\nDealer wins!"
-  else
+    player_money -= 3
+    dealer_money += 3
+  elsif dealer_score > 21
     puts "\nDealer bust ... Player wins"
+    player_money += 3
+    dealer_money -= 3
+  else
+    puts "\nDraw . . . "
   end
   puts "\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
 end
