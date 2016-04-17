@@ -164,16 +164,17 @@ def print_result(dealer, player, money)
   print_dollars
 end
 
+# Initialize money array, dealer is money[0], player is money[1]
 money = [21, 21]
 loop do
   dealer = []
   player = []
   puts "\n => Dealer has $#{money[0]}"
   puts " => Player has $#{money[1]}\n\n"
+  # End game when someone runs out of money
   if money[0] <= 0 || money[1] <= 0
     break
   end
-
   # Get dealer cards
   dealer << deal_card
   dealer << deal_card
@@ -181,7 +182,7 @@ loop do
   player << deal_card
   player << deal_card
   print_line
-  # Players hand
+  # Players hand, stop if busted
   if players_turn(dealer, player) == 'player_bust'
     print_result(dealer, player, money)
     next
