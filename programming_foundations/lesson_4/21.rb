@@ -5,10 +5,10 @@ puts "Welcome to the game 21"
 # Get card method chooses a card at random from the deck
 # 1 - 10 are number cards
 # 11 - Jack, 12 - Queen, 13 - King, 14 - Ace
-def get_card
+def deal_card
   card_value = rand(2..14)
   card_suit = rand(1..4)
-  card = [card_value, card_suit]
+  [card_value, card_suit]
 end
 
 def print_card(card)
@@ -38,16 +38,15 @@ def print_card(card)
   card[0].to_s + ' ' + suit
 end
 
-def get_score(card)
+def card_value(card)
   return card[0] if card[0] <= 10
   return 10 if card[0] <= 13
-  return 11 if card[0] = 14
+  return 11 if card[0] == 14
 end
 
-
 def print_hand(card)
-  card.each do |card|
-    puts ' Card => ' + print_card(card)
+  card.each do |each_card|
+    puts ' Card => ' + print_card(each_card)
   end
 end
 
@@ -56,8 +55,8 @@ def calculate_score(cards)
   aces = 0
   # Add up score from cards that are not aces
   cards.each do |card|
-    if get_score(card) < 11
-      score += get_score(card)
+    if card_value(card) < 11
+      score += card_value(card)
     else
       aces += 1
     end
@@ -78,11 +77,14 @@ def calculate_score(cards)
   score # return the score
 end
 
+def print_line
+  puts "---------------------------------"
+end
+
 def dealers_turn(dealer, player)
   loop do # Dealers turn
-    puts "------------------------------------------"
+    print_line
     dealer_score = calculate_score(dealer)
-    player_score = calculate_score(dealer)
 
     puts "\nPLAYER'S HAND"
     print_hand(player)
@@ -94,14 +96,14 @@ def dealers_turn(dealer, player)
     else
       puts "\nDealer taking card . . ."
       sleep(3)
-      dealer << get_card
+      dealer << deal_card
     end
   end
 end
 
 def players_turn(dealer, player)
   loop do # Players turn
-    puts "------------------------------------------"
+    print_line
     puts "\nDEALER'S HAND"
     puts " Card => #{print_card(dealer[0])} and one face down"
     player_score = calculate_score(player)
@@ -117,7 +119,7 @@ def players_turn(dealer, player)
     end
 
     if choice == 'h'
-      player << get_card
+      player << deal_card
     elsif choice == 's'
       return 'dealers_turn'
     end
@@ -129,14 +131,14 @@ loop do
   player = []
 
   # Get dealer cards
-  dealer << get_card
-  dealer << get_card
+  dealer << deal_card
+  dealer << deal_card
   # Get player cards
-  player << get_card
-  player << get_card
-  puts "------------------------------------------"
+  player << deal_card
+  player << deal_card
+  print_line
   # Players hand
-  break if players_turn(dealer, player) == 'player_bust'
+  next if players_turn(dealer, player) == 'player_bust'
   # Dealers hand
   dealers_turn(dealer, player)
   # Get the scores and work out the winner
@@ -150,7 +152,7 @@ loop do
   # Work out the winner
   if player_score <= 21 && player_score >= dealer_score
     puts "\nPlayer wins!"
-  elsif dealer_score <=21
+  elsif dealer_score <= 21
     puts "\nDealer wins!"
   else
     puts "\nDealer bust ... Player wins"
