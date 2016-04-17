@@ -11,6 +11,8 @@ def deal_card
   [card_value, card_suit]
 end
 
+# Print the cards to the screen in a fashion that allows the user
+# to understand the card value.
 def print_card(card)
   suit = ''
   case card[1]
@@ -54,6 +56,7 @@ def calculate_score(cards)
   score = 0
   aces = 0
   # Add up score from cards that are not aces
+  # and add up the number of aces
   cards.each do |card|
     if card_value(card) < 11
       score += card_value(card)
@@ -79,6 +82,10 @@ end
 
 def print_line
   puts "---------------------------------"
+end
+
+def print_dollars
+  puts "\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
 end
 
 def dealers_turn(dealer, player)
@@ -126,14 +133,44 @@ def players_turn(dealer, player)
   end
 end
 
-dealer_money = 21
-player_money = 21
+def print_result(dealer, player, money)
+  dealer_score = calculate_score(dealer)
+  player_score = calculate_score(player)
+  print_dollars
+  puts "\nPLAYER'S HAND #{player_score}"
+  print_hand(player)
+  puts "\nDEALER'S HAND #{dealer_score}"
+  print_hand(dealer)
+  # Work out the winner
+  if player_score > 21
+    puts "\nPlayer bust ... Dealer wins!"
+    money[0] += 3
+    money[1] -= 3
+  elsif player_score <= 21 && player_score > dealer_score
+    puts "\nPlayer wins!"
+    money[0] -= 3
+    money[1] += 3
+  elsif dealer_score <= 21 && dealer_score > player_score
+    puts "\nDealer wins!"
+    money[0] += 3
+    money[1] -= 3
+  elsif dealer_score > 21
+    puts "\nDealer bust ... Player wins!"
+    money[0] -= 3
+    money[1] += 3
+  else
+    puts "\nDraw . . . "
+  end
+  print_dollars
+end
+
+money = [21, 21]
 loop do
   dealer = []
   player = []
-  puts "\n => Dealer has $#{dealer_money}"
-  puts " => Player has $#{player_money}\n\n"
-  if dealer_money <= 0 || player_money <= 0
+  puts "\n => Dealer has $#{money[0]}"
+  puts " => Player has $#{money[1]}\n\n"
+  if money[0] <= 0 || money[1] <= 0
     break
   end
 
@@ -146,35 +183,11 @@ loop do
   print_line
   # Players hand
   if players_turn(dealer, player) == 'player_bust'
-    player_money -= 3
-    dealer_money += 3
+    print_result(dealer, player, money)
     next
   end
   # Dealers hand
   dealers_turn(dealer, player)
   # Get the scores and work out the winner
-  dealer_score = calculate_score(dealer)
-  player_score = calculate_score(player)
-  puts "\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
-  puts "\nPLAYER'S HAND #{player_score}"
-  print_hand(player)
-  puts "\nDEALER'S HAND #{dealer_score}"
-  print_hand(dealer)
-  # Work out the winner
-  if player_score <= 21 && player_score > dealer_score
-    puts "\nPlayer wins!"
-    player_money += 3
-    dealer_money -= 3
-  elsif dealer_score <= 21
-    puts "\nDealer wins!"
-    player_money -= 3
-    dealer_money += 3
-  elsif dealer_score > 21
-    puts "\nDealer bust ... Player wins"
-    player_money += 3
-    dealer_money -= 3
-  else
-    puts "\nDraw . . . "
-  end
-  puts "\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+  print_result(dealer, player, money)
 end
