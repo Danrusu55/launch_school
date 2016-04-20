@@ -27,14 +27,14 @@ def computers_turn_random
   move = [computers_col, computers_row]
 end
 
-board_hash = { 'a' => { 1=> ' ', 2 => ' ', 3 => ' ', 4 => ' ', 5 => ' ', 6 => ' ', 7 => ' ', 8 => ' ', 9 => ' ' }, 
-                          'b' => { 1 => ' ', 2 => ' ', 3 => ' ', 4 => ' ', 5 => ' ', 6 => ' ', 7 => ' ', 8 => ' ', 9 => ' ' }, 
-                          'c' => { 1 => ' ', 2 => ' ', 3 => ' ', 4 => ' ', 5 => ' ', 6 => ' ', 7 => ' ', 8 => ' ', 9 => ' ' }, 
-                          'd' => { 1 => ' ', 2 => ' ', 3 => ' ', 4 => ' ', 5 => ' ', 6 => ' ', 7 => ' ', 8 => ' ', 9 => ' ' }, 
-                          'e' => { 1 => ' ', 2 => ' ', 3 => ' ', 4 => ' ', 5 => ' ', 6 => ' ', 7 => ' ', 8 => ' ', 9 => ' ' }, 
-                          'f' => {1 => ' ', 2 => ' ', 3 => ' ', 4 => ' ', 5 => ' ', 6 => ' ', 7 => ' ', 8 => ' ', 9 => ' ' }, 
-                          'g' => { 1 => ' ', 2 => ' ', 3 => ' ', 4 => ' ', 5 => ' ', 6 => ' ', 7 => ' ', 8 => ' ', 9 => ' ' }, 
-                          'h' => { 1 => ' ', 2 => ' ', 3 => ' ', 4 => ' ', 5 => ' ', 6 => ' ', 7 => ' ', 8 => ' ', 9 => ' ' }, 
+board_hash = { 'a' => { 1=> ' ', 2 => ' ', 3 => ' ', 4 => ' ', 5 => ' ', 6 => ' ', 7 => ' ', 8 => ' ', 9 => ' ' },
+                          'b' => { 1 => ' ', 2 => ' ', 3 => ' ', 4 => ' ', 5 => ' ', 6 => ' ', 7 => ' ', 8 => ' ', 9 => ' ' },
+                          'c' => { 1 => ' ', 2 => ' ', 3 => ' ', 4 => ' ', 5 => ' ', 6 => ' ', 7 => ' ', 8 => ' ', 9 => ' ' },
+                          'd' => { 1 => ' ', 2 => ' ', 3 => ' ', 4 => ' ', 5 => ' ', 6 => ' ', 7 => ' ', 8 => ' ', 9 => ' ' },
+                          'e' => { 1 => ' ', 2 => ' ', 3 => ' ', 4 => ' ', 5 => ' ', 6 => ' ', 7 => ' ', 8 => ' ', 9 => ' ' },
+                          'f' => {1 => ' ', 2 => ' ', 3 => ' ', 4 => ' ', 5 => ' ', 6 => ' ', 7 => ' ', 8 => ' ', 9 => ' ' },
+                          'g' => { 1 => ' ', 2 => ' ', 3 => ' ', 4 => ' ', 5 => ' ', 6 => ' ', 7 => ' ', 8 => ' ', 9 => ' ' },
+                          'h' => { 1 => ' ', 2 => ' ', 3 => ' ', 4 => ' ', 5 => ' ', 6 => ' ', 7 => ' ', 8 => ' ', 9 => ' ' },
                           'i' => { 1 => ' ', 2 => ' ', 3 => ' ', 4 => ' ', 5 => ' ', 6 => ' ', 7 => ' ', 8 => ' ', 9 => ' ' } }
 
 def build_board(board_hash)
@@ -75,7 +75,7 @@ def check_winner(board_hash, player)
   # Check column for winner
   board_hash.each do |cols, rows|
     col_occupied = 0
-    1.upto(9) do |row| 
+    1.upto(9) do |row|
       if board_hash[cols][row] == player
         col_occupied += 1
       end
@@ -83,38 +83,46 @@ def check_winner(board_hash, player)
     return true if col_occupied == 9
   end
   # Check row for winner
-  row_01_occupied = 0
-  row_02_occupied = 0
-  row_03_occupied = 0
-  row_04_occupied = 0
-  row_05_occupied = 0
-  row_06_occupied = 0
-  row_07_occupied = 0
-  row_08_occupied = 0
-  row_09_occupied = 0
+  row_occupied = [0,0,0,0,0,0,0,0,0]
+  # row_01_occupied = 0
+  # row_02_occupied = 0
+  # row_03_occupied = 0
+  # row_04_occupied = 0
+  # row_05_occupied = 0
+  # row_06_occupied = 0
+  # row_07_occupied = 0
+  # row_08_occupied = 0
+  # row_09_occupied = 0
   board_hash.each do |cols, _|
     puts "Checked #{cols} column for #{player}"
-    if board_hash[cols][1] == player then row_01_occupied += 1
-    elsif board_hash[cols][2] == player then row_02_occupied += 1
-    elsif board_hash[cols][3] == player then row_03_occupied += 1
-    elsif board_hash[cols][4] == player then row_04_occupied += 1
-    elsif board_hash[cols][5] == player then row_05_occupied += 1
-    elsif board_hash[cols][6] == player then row_06_occupied += 1
-    elsif board_hash[cols][7] == player then row_07_occupied += 1
-    elsif board_hash[cols][8] == player then row_08_occupied += 1
-    elsif board_hash[cols][9] == player then row_09_occupied += 1
+    1.upto(9) do |index|
+      if board_hash[cols][index] == player then row_occupied[index-1] += 1
+      end
     end
+    # if board_hash[cols][1] == player then row_01_occupied += 1
+    # elsif board_hash[cols][2] == player then row_02_occupied += 1
+    # elsif board_hash[cols][3] == player then row_03_occupied += 1
+    # elsif board_hash[cols][4] == player then row_04_occupied += 1
+    # elsif board_hash[cols][5] == player then row_05_occupied += 1
+    # elsif board_hash[cols][6] == player then row_06_occupied += 1
+    # elsif board_hash[cols][7] == player then row_07_occupied += 1
+    # elsif board_hash[cols][8] == player then row_08_occupied += 1
+    # elsif board_hash[cols][9] == player then row_09_occupied += 1
+    # end
   end
-  puts "Row 1 has #{row_01_occupied} occupied columns"
-  return true if row_01_occupied == 9
-  return true if row_02_occupied == 9
-  return true if row_03_occupied == 9
-  return true if row_04_occupied == 9
-  return true if row_05_occupied == 9
-  return true if row_06_occupied == 9
-  return true if row_07_occupied == 9
-  return true if row_08_occupied == 9
-  return true if row_09_occupied == 9
+  # puts "Row 1 has #{row_01_occupied} occupied columns"
+  1.upto(9) do |index|
+    return true if row_occupied[index] == 9
+  end
+  # return true if row_01_occupied == 9
+  # return true if row_02_occupied == 9
+  # return true if row_03_occupied == 9
+  # return true if row_04_occupied == 9
+  # return true if row_05_occupied == 9
+  # return true if row_06_occupied == 9
+  # return true if row_07_occupied == 9
+  # return true if row_08_occupied == 9
+  # return true if row_09_occupied == 9
   false
 end
 
@@ -159,15 +167,15 @@ computer_score = 0
 # LOOP here
 loop do
   # Build empty board
-board_hash = { 'a' => { 1=> ' ', 2 => ' ', 3 => ' ', 4 => ' ', 5 => ' ', 6 => ' ', 7 => ' ', 8 => ' ', 9 => ' ' }, 
-                          'b' => { 1 => ' ', 2 => ' ', 3 => ' ', 4 => ' ', 5 => ' ', 6 => ' ', 7 => ' ', 8 => ' ', 9 => ' ' }, 
-                          'c' => { 1 => ' ', 2 => ' ', 3 => ' ', 4 => ' ', 5 => ' ', 6 => ' ', 7 => ' ', 8 => ' ', 9 => ' ' }, 
-                          'd' => { 1 => ' ', 2 => ' ', 3 => ' ', 4 => ' ', 5 => ' ', 6 => ' ', 7 => ' ', 8 => ' ', 9 => ' ' }, 
-                          'e' => { 1 => ' ', 2 => ' ', 3 => ' ', 4 => ' ', 5 => ' ', 6 => ' ', 7 => ' ', 8 => ' ', 9 => ' ' }, 
-                          'f' => {1 => ' ', 2 => ' ', 3 => ' ', 4 => ' ', 5 => ' ', 6 => ' ', 7 => ' ', 8 => ' ', 9 => ' ' }, 
-                          'g' => { 1 => ' ', 2 => ' ', 3 => ' ', 4 => ' ', 5 => ' ', 6 => ' ', 7 => ' ', 8 => ' ', 9 => ' ' }, 
-                          'h' => { 1 => ' ', 2 => ' ', 3 => ' ', 4 => ' ', 5 => ' ', 6 => ' ', 7 => ' ', 8 => ' ', 9 => ' ' }, 
-                          'i' => { 1 => ' ', 2 => ' ', 3 => ' ', 4 => ' ', 5 => ' ', 6 => ' ', 7 => ' ', 8 => ' ', 9 => ' ' } } 
+board_hash = { 'a' => { 1=> ' ', 2 => ' ', 3 => ' ', 4 => ' ', 5 => ' ', 6 => ' ', 7 => ' ', 8 => ' ', 9 => ' ' },
+                          'b' => { 1 => ' ', 2 => ' ', 3 => ' ', 4 => ' ', 5 => ' ', 6 => ' ', 7 => ' ', 8 => ' ', 9 => ' ' },
+                          'c' => { 1 => ' ', 2 => ' ', 3 => ' ', 4 => ' ', 5 => ' ', 6 => ' ', 7 => ' ', 8 => ' ', 9 => ' ' },
+                          'd' => { 1 => ' ', 2 => ' ', 3 => ' ', 4 => ' ', 5 => ' ', 6 => ' ', 7 => ' ', 8 => ' ', 9 => ' ' },
+                          'e' => { 1 => ' ', 2 => ' ', 3 => ' ', 4 => ' ', 5 => ' ', 6 => ' ', 7 => ' ', 8 => ' ', 9 => ' ' },
+                          'f' => {1 => ' ', 2 => ' ', 3 => ' ', 4 => ' ', 5 => ' ', 6 => ' ', 7 => ' ', 8 => ' ', 9 => ' ' },
+                          'g' => { 1 => ' ', 2 => ' ', 3 => ' ', 4 => ' ', 5 => ' ', 6 => ' ', 7 => ' ', 8 => ' ', 9 => ' ' },
+                          'h' => { 1 => ' ', 2 => ' ', 3 => ' ', 4 => ' ', 5 => ' ', 6 => ' ', 7 => ' ', 8 => ' ', 9 => ' ' },
+                          'i' => { 1 => ' ', 2 => ' ', 3 => ' ', 4 => ' ', 5 => ' ', 6 => ' ', 7 => ' ', 8 => ' ', 9 => ' ' } }
   col = ' '
   row = 0
   computer_move = []

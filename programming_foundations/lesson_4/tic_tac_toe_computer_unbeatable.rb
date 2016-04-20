@@ -193,67 +193,68 @@ loop do
   board_hash = { a1: ' ', a2: ' ', a3: ' ', b1: ' ', b2: ' ', b3: ' ', c1: ' ', c2: ' ', c3: ' ' }
   col_row = ' '
 
-  # LOOP here
-  loop do
-    # output board to screen
-    build_board(board_hash)
-
-    # Player two has turn
-    puts "Computer's turn . . ."
+def play_tic_tac_toe
     loop do
-      col_row = computers_turn(board_hash)
-      break if check_input_valid(col_row, board_hash)
-    end
-
-    # Put player two on the board
-    board_hash[col_row.to_sym] = 'o'
-
-    # Check for winner
-    # If winner break
-    if check_winner(board_hash, 'o')
+      # output board to screen
       build_board(board_hash)
-      puts "computer won!!"
-      break
 
-    end
-    # Check for draw
-    if check_draw(board_hash)
+      # Player two has turn
+      puts "Computer's turn . . ."
+      loop do
+        col_row = computers_turn(board_hash)
+        break if check_input_valid(col_row, board_hash)
+      end
+
+      # Put player two on the board
+      board_hash[col_row.to_sym] = 'o'
+
+      # Check for winner
+      # If winner break
+      if check_winner(board_hash, 'o')
+        build_board(board_hash)
+        puts "computer won!!"
+        break
+
+      end
+      # Check for draw
+      if check_draw(board_hash)
+        build_board(board_hash)
+        puts "It is a draw . . ."
+        break
+      end
+
       build_board(board_hash)
-      puts "It is a draw . . ."
-      break
+
+      # Human has turn
+      puts "Human please take a turn."
+      puts "Please chose column & row (from a1 to c3)."
+      loop do
+        col_row = gets.chomp
+
+        # Check input is valid
+        break if check_input_valid(col_row, board_hash)
+        puts "Please make a valid choice: "
+      end
+
+      # Add to board
+      board_hash[col_row.to_sym] = 'x'
+      # pry.bind
+
+      # Check for winner
+      # If winner break
+      if check_winner(board_hash, 'x')
+        build_board(board_hash)
+        puts "You won!!"
+        break
+      end
     end
+    # END LOOP here
 
-    build_board(board_hash)
-
-    # Human has turn
-    puts "Human please take a turn."
-    puts "Please chose column & row (from a1 to c3)."
-    loop do
-      col_row = gets.chomp
-
-      # Check input is valid
-      break if check_input_valid(col_row, board_hash)
-      puts "Please make a valid choice: "
-    end
-
-    # Add to board
-    board_hash[col_row.to_sym] = 'x'
-    # pry.bind
-
-    # Check for winner
-    # If winner break
-    if check_winner(board_hash, 'x')
-      build_board(board_hash)
-      puts "You won!!"
-      break
-    end
+    # Check if player wants another game
+    # If not break
+    puts "Would you like another game (y - yes)?"
+    play_again = gets.chomp
+    break if play_again[0].downcase != 'y'
   end
-  # END LOOP here
-
-  # Check if player wants another game
-  # If not break
-  puts "Would you like another game (y - yes)?"
-  play_again = gets.chomp
-  break if play_again[0].downcase != 'y'
 end
 # END LOOP here

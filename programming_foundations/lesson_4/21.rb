@@ -88,16 +88,14 @@ def print_dollars
   puts "\n$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
 end
 
-def dealers_turn(dealer, player)
+def dealers_turn(dealer)
   loop do # Dealers turn
     print_line
-    dealer_score = calculate_score(dealer)
-
-    puts "\nPLAYER'S HAND"
-    print_hand(player)
+    # Start dealers hand
     puts "\nDEALER'S HAND"
     print_hand(dealer)
-
+    dealer_score = calculate_score(dealer)
+    # Check if dealer should hit or stand
     if dealer_score > 16
       return
     else
@@ -119,7 +117,7 @@ def players_turn(dealer, player)
 
     if player_score > 21
       puts "\nYou BUST!"
-      return 'player_bust'
+      return :player_bust
     else
       puts "\nType h to hit or s to stand?"
       choice = gets.chomp
@@ -164,13 +162,19 @@ def print_result(dealer, player, money)
   print_dollars
 end
 
+# Print the amount of money each player has to the screen
+def print_money(money)
+  puts "\n => Dealer has $#{money[0]}"
+  puts " => Player has $#{money[1]}\n\n"
+end
+
 # Initialize money array, dealer is money[0], player is money[1]
 money = [21, 21]
 loop do
+  # Initialize dealer and player hands
   dealer = []
   player = []
-  puts "\n => Dealer has $#{money[0]}"
-  puts " => Player has $#{money[1]}\n\n"
+  print_money(money)
   # End game when someone runs out of money
   if money[0] <= 0 || money[1] <= 0
     break
@@ -183,12 +187,12 @@ loop do
   player << deal_card
   print_line
   # Players hand, stop if busted
-  if players_turn(dealer, player) == 'player_bust'
+  if players_turn(dealer, player) == :player_bust
     print_result(dealer, player, money)
     next
   end
   # Dealers hand
-  dealers_turn(dealer, player)
+  dealers_turn(dealer)
   # Get the scores and work out the winner
   print_result(dealer, player, money)
 end
