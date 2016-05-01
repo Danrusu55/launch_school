@@ -130,6 +130,12 @@ class RPSGame
     true if human.score >= 10 || computer.score >= 10
   end
 
+  def store_results
+    self.result[:computer] << computer.move.value
+    self.result[:human] << human.move.value
+    puts self.result.inspect
+  end
+
   def play
     display_welcome_message
 
@@ -138,6 +144,7 @@ class RPSGame
       computer.choose
       display_choice
       display_winner
+      store_results
       break if check_winner?
       break unless play_again?
     end

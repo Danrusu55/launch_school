@@ -1,3 +1,36 @@
+class Rock
+  def win?(other_move)
+    return true if other_move.class == Scissors
+    false
+  end
+
+  def to_s
+    'rock'
+  end
+end
+
+class Paper
+  def win?(other_move)
+    return true if other_move.class == Rock
+    false
+  end
+
+  def to_s
+    'paper'
+  end
+end
+
+class Scissors
+  def win?(other_move)
+    return true if other_move.class == Paper
+    false
+  end
+
+  def to_s
+    'scissors'
+  end
+end
+
 class Player
   attr_accessor :move, :name, :score
   def initialize
@@ -11,32 +44,16 @@ class Move
 
   VALUES = ['rock', 'paper', 'scissors'].freeze
 
-  def initialize(value)
+  def initialize(choice)
+    case choice
+    when 'rock'
+      value = Rock.new
+    when 'paper'
+      value = Paper.new
+    when 'scissors'
+      value = Scissors.new
+    end
     @value = value
-  end
-
-  def rock?
-    @value == 'rock'
-  end
-
-  def paper?
-    @value == 'paper'
-  end
-
-  def scissors?
-    @value == 'scissors'
-  end
-
-  def >(other_move)
-    (rock? && other_move.scissors?) ||
-      (paper? && other_move.rock?) ||
-      (scissors? && other_move.paper?)
-  end
-
-  def <(other_move)
-    (rock? && other_move.paper?) ||
-      (paper? && other_move.scissors?) ||
-      (scissors? && other_move.rock?)
   end
 
   def to_s
@@ -79,12 +96,11 @@ class Computer < Player
 end
 
 class RPSGame
-  attr_accessor :human, :computer, :result
+  attr_accessor :human, :computer
 
   def initialize
     @human = Human.new
     @computer = Computer.new
-    @result = {:computer => [], :human => []}
   end
 
   def display_welcome_message
@@ -96,15 +112,15 @@ class RPSGame
   end
 
   def display_choice
-    puts "#{human.name} chose #{human.move}."
-    puts "#{computer.name} chose #{computer.move}."
+    puts "#{human.name} chose #{human.move.value}."
+    puts "#{computer.name} chose #{computer.move.value}."
   end
 
   def display_winner
-    if human.move > computer.move
+    if human.move.value.win?(computer.move.value)
       human.score += 1
       puts "#{human.name} won!"
-    elsif human.move < computer.move
+    elsif computer.move.value.win?(computer.move.value)
       computer.score += 1
       puts "#{computer.name} won!"
     else
