@@ -1,0 +1,18 @@
+module Taste
+  def flavor(flavor)
+    puts "#{flavor}"
+  end
+end
+
+class Orange
+  include Taste
+end
+
+class HotSauce
+  include Taste
+end
+
+puts "---Orange ancestors---"
+puts Orange.ancestors
+puts "---HotSauce ancestors---"
+puts HotSauce.ancestors
