@@ -85,26 +85,29 @@ class Square
 end
 
 class Player
-  attr_reader :marker
+  attr_accessor :marker, :name, :score
 
-  def initialize(marker)
+  def initialize(marker, name='')
     @marker = marker
+    @name = name
+    @score = 0
   end
 end
 
 class TTTGame
-  HUMAN_MARKER = "X".freeze
-  COMPUTER_MARKER = "O".freeze
-  attr_reader :board, :human, :computer
+  X_MARKER = "X".freeze
+  O_MARKER = "O".freeze
+  attr_accessor :board, :human, :computer
 
   def initialize
     @board = Board.new
-    @human = Player.new(HUMAN_MARKER)
-    @computer = Player.new(COMPUTER_MARKER)
+    @human = Player.new(X_MARKER)
+    @computer = Player.new(O_MARKER)
     @current_player = @computer
   end
 
   def play
+    chose_player_names
     clear_screen
     display_welcome_message
     loop do
@@ -125,6 +128,15 @@ class TTTGame
 
   def display_welcome_message
     puts "Welcome to Tic Tac Toe!\n"
+  end
+
+  def chose_player_names
+    print "Please enter your name : "
+    name = gets.chomp
+    human.name = name
+    print "Please enter computer name : "
+    name = gets.chomp
+    computer.name = name
   end
 
   def goodbye_message
@@ -150,7 +162,7 @@ class TTTGame
 
   def display_board
     puts ""
-    puts "You are #{human.marker}, computer is #{computer.marker}.\n"
+    puts "#{human.name} are #{human.marker}, #{computer.name} is #{computer.marker}.\n"
     board.draw
     puts ""
   end
@@ -187,7 +199,7 @@ class TTTGame
     Board::WINNING_LINES.each do |line|
       arr = []
       line.each do |index|
-        if board.squares[index].marker == 'O'
+        if board.squares[index].marker == X_MARKER
           arr << index
           if arr.length == 2
             line.each do |x|
@@ -203,7 +215,7 @@ class TTTGame
     Board::WINNING_LINES.each do |line|
       arr = []
       line.each do |index|
-        if board.squares[index].marker == 'X'
+        if board.squares[index].marker == O_MARKER
           arr << index
           if arr.length == 2
             line.each do |x|
@@ -224,7 +236,7 @@ class TTTGame
   end
 
   def clear_screen
-    # system 'clear'
+    system 'clear'
   end
 
   def play_again?
