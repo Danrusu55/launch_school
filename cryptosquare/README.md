@@ -1,3 +1,4 @@
-#Crypto Challenge
+#Crypto Square Challenge
 
-Crypto challenge test and completed program in ruby
+Crypto square challenge test and completed program in ruby.
+From launchschool.com challenges
