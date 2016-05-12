@@ -1,0 +1,43 @@
+{
+  "MiniTest": {
+    "coverage": {
+      "/Users/alexi2/Documents/Dropbox/launch_school/cryptosquare/crypto_square.rb": [
+        1,
+        1,
+        null,
+        1,
+        16,
+        null,
+        null,
+        1,
+        52,
+        null,
+        null,
+        1,
+        41,
+        null,
+        null,
+        1,
+        2,
+        null,
+        null,
+        1,
+        7,
+        7,
+        7,
+        7,
+        39,
+        212,
+        201,
+        null,
+        39,
+        39,
+        null,
+        7,
+        null,
+        null
+      ]
+    },
+    "timestamp": 1462914822
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "MiniTest": {
+    "coverage": {
+      "/Users/alexi2/Documents/Dropbox/launch_school/pascals_triangle/pascals_triangle.rb": [
+        1,
+        null,
+        1,
+        1,
+        null,
+        1,
+        6,
+        6,
+        null,
+        null,
+        1,
+        6,
+        6,
+        6,
+        35,
+        35,
+        null,
+        6,
+        null,
+        null,
+        1,
+        35,
+        35,
+        35,
+        35,
+        35,
+        245,
+        35,
+        null,
+        0,
+        null,
+        29,
+        null,
+        181,
+        null,
+        245,
+        null,
+        35,
+        null,
+        null
+      ]
+    },
+    "timestamp": 1463011092
+  }
+}
