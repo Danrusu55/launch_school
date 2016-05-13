@@ -1,0 +1,21 @@
+120 - Object Oriented Programming
+
+classes and objects
+using attr_* to automatically create setter and/or getter methods, and how to call them
+instance methods vs class methods
+referencing and setting an instance variable vs using getter/setter methods
+class inheritance
+mixing in module
+method lookup path
+self
+calling methods with self
+more about self
+being able to read OO code
+fake operators
+truthiness
+working with collaborator objects
+130 - Ruby Foundations: More Topics
+
+how blocks work, and when we'd want to use them
+how to implement your own each, select, reduce, and map in a custom collection-oriented class
+
