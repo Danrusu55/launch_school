@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<head>
+  <title><%= params[:user].capitalize || "All users" %> | Company</title>
+</head>
+
+<body>
+  <%= yield %>
+  <p>There are <%= @users.size %> users with <%= count_interests(@users).to_s %> interests</p>
+</body>

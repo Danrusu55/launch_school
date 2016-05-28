@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  <% @file_names.each do |file_name| %>
+    <p><%= file_name %></p>
+  <% end %>
+  <a href="/?sort=reverse">ascending</a>
+  <a href="/">descending</a>
+</body>
