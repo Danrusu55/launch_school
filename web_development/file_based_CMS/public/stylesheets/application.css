@@ -1,0 +1,15 @@
+body {
+  padding: 2vw;
+  font-family: sans-serif;
+}
+
+.message {
+  color: #333333;
+  background: #ffff00;
+  padding-top: 2vw;
+  padding-bottom: 2vw;
+}
+
+form.inline {
+  display: inline;
+}

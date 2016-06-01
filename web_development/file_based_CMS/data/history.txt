@@ -1,0 +1,6 @@
+The Ruby language is 21 years old. Its strong community and adoption by the open source community has kept this language steady and improving. Ruby has changed drastically over the years. It has grown from a young child to the strong adult that it is today. But it didn’t get that way overnight. Let’s take a look at the life of the Ruby programming language.
+
+Note: This article is packed with metaphors (language to human), so be prepared.
+
+Birth (1993)
+Ruby was born in 1993, conceieved in a discussion between Yukihiro Matsumoto (“Matz”) and a colleague. They were discussing the possibility of an object-oriented scripting-language. Matz stated in ruby-talk:00382 that he knew Perl, but did not like it very much; that it had the smell of a “toy” language. He also discussed that he knew Python, but didn’t like it because it wasn’t a true object-oriented programming language.
