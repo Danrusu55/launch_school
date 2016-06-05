@@ -1,0 +1,179 @@
+# Assessment
+
+### 1.
+
+HTTP is Hyper Text Transfer Protocol. This is the common language of the internet. It allows information to be passed from server to client and back in text form.
+
+### 2.
+
+https://amazon.com/products/GP1956028?q=10nafy0s&s=14
+
+https - is the scheme used: http protocol. In this case the s at the end specifies that the http is using encryption.
+
+amazon.com - the second part is the server internet address, its domain name, which requires interpretation through a Domain Name Server.
+
+/products/GP1956028 - is the path to the resources at the server.
+
+? - query, specifying that there are parameters being sent to the server
+
+q - is the key of the first parameter
+
+10nafy0s - is the value of the first parameter
+
+s - is the key of the second parameter
+
+14 - is the value of the second parameter
+
+### 3.
+
+The components of an HTTP request:
+
+Start Line - which indicates the type of request, typically GET. The Host which specifies the URL. And the HTTP protocol e.g. HTTP/1.1
+
+Parameters
+
+The Headers
+
+The Body (optional, generally used for POST requests)
+
+### 4.
+
+The components of an HTTP response:
+
+Response start line which gives the STATUS
+
+Response Headers
+
+Response Body, which is the message body and contains the raw response data
+
+### 5.
+
+HTTP/1.0 200 OK
+Date: Sun, 05 Jun 2016 22:14:23 GMT
+Server: Apache/1.3.11 BSafe-SSL/1.38 (Unix)
+Last-modified: Sat, 04 Jun 2016 12:32:23 GMT
+Content-length: 232
+Content-type: text/plain
+
+### 6.
+
+By reading the STATUS Code
+
+### 7.
+
+HTTP is a stateless protocol which means that each request is treated as an independent transaction that is unrelated to any previous requests. Each communication consists of a request response pair after which the connection is broken.
+
+### 8.
+
+https://greatbooks.com/search?type=used&author=Andy%20Weir#3
+
+### 9.
+
+A GET request is for reading information from the server, whereas a POST request is used for writing information on the server.
+
+### 10.
+
+```
+before do
+  # some code here…
+end
+```
+
+### 11.
+
+```
+get “/stories/:story_id/comments/:comments_id” do
+  # some code here…
+end
+```
+
+### 12.
+
+Data entered by a user can include scripts that execute to perform unwanted or malicious tasks. On the server we can parse entered data before it is rendered by the template (e.g. erb) to ensure that it is not executed. In Sinatra we do this in the following manner:
+
+In the application file:
+
+```
+configure do
+  set :era, :escape_html => true
+end
+```
+
+In the template we must then set the following to allow our own scripts to run where required.
+
+```
+<%== yield %>
+```
+Note the extra = sign.
+
+### 13.
+
+A tempting language allows us to embed code from our programming language inside a master document. For example, in Sinatra the .erb template allows us to write Ruby code inside our files that are rendered and parsed by the server as html to the client using the following syntax ```<% # something here %> ```
+
+There are many different templating languages in web application design, and they provide ways of defining what html to generate and how to embed dynamic values.
+
+### 14.
+
+Data is made accessible to view templates in Sinatra by using instance variables within the route:
+
+```
+get “/“ do
+  @variable = 10
+end
+```
+
+and using params and/or sessions(local storage in cookies) as key value pairs
+
+```
+params[:id]
+```
+```
+session[:user_name]
+```
+
+### 15.
+
+The params[:id] value is a string and must be converted to an integer before making the SQL query using the ``` find ``` method.
+
+```
+get "/receipts/:id" do
+  @receipt = Receipt.find(params[:id].to_i)
+  erb :receipt_detail
+  puts "rendering the detail page"
+end
+```
+
+### 16.
+
+A database schema is the structural layout that provides a logical overview of an entire database. It gives us the manner in which the data is organised and how the relations among them are associated. It also provides the constraints that must be applied to the data.
+
+### 17.
+
+```
+SELECT post_count FROM users
+WHERE post_count >= 5;
+```
+or 
+```
+SELECT * FROM users
+WHERE post_count >= 5;
+```
+
+Dependent upon whether we wanted to view all the columns or just the post_count column.
+
+### 18.
+
+```
+SELECT id, email FROM users
+WHERE post_count >= 5;
+```
+
+### 19.
+
+The primary key is a unique identifier for each row in an SQL table. Generally this is handled by the database and is an incrementing integer.
+
+### 20.
+
+JOIN is used in an SQL query to combine the records of two or more tables in a database. The join is a way of combining the field from these tables by using values that are common to each of them.
+
+
