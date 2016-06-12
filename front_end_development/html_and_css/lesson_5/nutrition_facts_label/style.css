@@ -1,0 +1,81 @@
+body {
+  font: normal 28px Helvetica, Arial, sans-serif;
+}
+article {
+  width: 680px;
+  border: 2px solid #000000;
+  padding: 0 2vw;
+}
+header h1 {
+  font-size: 12vw;
+}
+header p {
+  margin: 1vw 0;
+}
+header h2 {
+  border-top: 30px solid #000000;
+  border-bottom: 1px solid #000000;
+  padding: 1vw 0;
+}
+header dl {
+  display: inline-block;
+  width: 50%;
+  padding: 5px 0;
+}
+dl {
+  margin: 0;
+}
+header dl + dl {
+  float: right;
+  text-align: right;
+}
+dt {
+  display: inline;
+}
+dd {
+  display: inline;
+}
+article table {
+  width: 100%;
+}
+article thead th {
+  text-align: right;
+}
+article dl {
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+article dd {
+  font-weight: normal;
+}
+article td:last-of-type {
+  text-align: right;
+  font-weight: bold;
+}
+article tbody th {
+  padding: 2px 0;
+  margin: 0;
+  border-top: 1px solid #000000;
+}
+article tbody td {
+  padding: 2px 0;
+  margin: 0;
+  border-top: 1px solid #000000;
+}
+
+article tfoot tr td:last-of-type {
+  font-weight: normal;
+  text-align: left;
+  border-top: 1px solid #000000;
+  padding: 2px 0;
+
+}
+article table:last-of-type * {
+  font-weight: normal;
+  font-size: 22px;
+  text-align: left;
+}
+.indent {
+  width: 4vw;
+}
