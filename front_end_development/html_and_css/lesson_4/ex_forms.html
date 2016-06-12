@@ -1,3 +1,7 @@
+<head>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
 <form action="" method="post">
   <fieldset>
     <dl>
@@ -54,3 +58,133 @@
     <input type="submit" value="send" />
   </fieldset>
 </form>
+
+<form action="" method="post">
+  <fieldset>
+
+    <dl>
+      <dt><h2>Category</h2></dt>
+      <dd>
+        <select name="category" >
+          <option value="core">Core</option>
+          <option value="plugins">Plugins and Libraries</option>
+          <option value="conventions">Conventions</option>
+          <option value="reviews">Reviews</option>
+          <option value="opinions">Opinions</option>
+          <option value="people">People</option>
+        </select>
+      </dd>
+
+      <dt><h2>Tags</h2></dt>
+      <dd>
+        <select name="tags" multiple>
+          <option value="html">HTML</option>
+          <option value="css">CSS</option>
+          <option value="javascript">Javascript</option>
+          <option value="Ruby">Ruby</option>
+          <option value="Rails">Rails</option>
+          <option value="Python">Python</option>
+          <option value="Django">Django</option>
+        </select>
+      </dd>
+    </dl>
+    <input type="reset" value="reset" />
+    <input type="submit" value="Filter" />
+  </fieldset>
+</form>
+
+<form action="" method="post">
+  <fieldset>
+    <dl>
+      <dt><label for="first_name">First Name</label></dt>
+      <dd><input type="text" name="first_name" id="first_name" /></dd>
+      <dt><label for="last_name">Last Name</label></dt>
+      <dd><input type="text" name="last_name" id="last_name" /></dd>
+      <dt><label for="email">Email Address</label></dt>
+      <dd><input type="email" name="email" id="email" autocomplete="off" autocorrect="off" autocapitalize="off" /></dd>
+      <dt><label for="city">City</label></dt>
+      <dd><input type="text" name="city" id="city" /></dd>
+      <dt><label for="state">State</label></dt>
+      <dd><select name="state">
+          <option>AK</option>
+          <option>AL</option>
+          <option>AR</option>
+          <option>AZ</option>
+          <option>CA</option>
+          <option>CO</option>
+          <option>CT</option>
+          <option>DC</option>
+          <option>DE</option>
+          <option>FL</option>
+          <option>GA</option>
+          <option>HI</option>
+          <option>IA</option>
+          <option>ID</option>
+          <option>IL</option>
+          <option>IN</option>
+          <option>KS</option>
+          <option>KY</option>
+          <option>LA</option>
+          <option>MA</option>
+          <option>MD</option>
+          <option>ME</option>
+          <option>MI</option>
+          <option>MN</option>
+          <option>MO</option>
+          <option>MS</option>
+          <option>MT</option>
+          <option>NC</option>
+          <option>ND</option>
+          <option>NE</option>
+          <option>NH</option>
+          <option>NJ</option>
+          <option>NM</option>
+          <option>NV</option>
+          <option>NY</option>
+          <option>OH</option>
+          <option>OK</option>
+          <option>OR</option>
+          <option>PA</option>
+          <option>RI</option>
+          <option>SC</option>
+          <option>SD</option>
+          <option>TN</option>
+          <option>TX</option>
+          <option>UT</option>
+          <option>VA</option>
+          <option>VT</option>
+          <option>WA</option>
+          <option>WI</option>
+          <option>WV</option>
+          <option>WY</option>
+        </select></dd>
+      <dt><label for="zipcode">Zip Code</label></dt>
+      <dd><input type="number" min="0" max="99999" name="zipcode" id="zipcode" /></dd>
+      <dt><h3>Which color do you prefer</h3></dt>
+      <dd>
+        <label><input type="radio" name="color" value="red" />Red</label>
+        <label><input type="radio" name="color" value="green" />Green</label>
+        <label><input type="radio" name="color" value="blue" />Blue</label>
+        <label><input type="radio" name="color" value="Yellow" />Yellow</label>
+      </dd>
+      <dt><h3>Which technologies do you want to hear more about</h3></dt>
+      <dd>
+        <select name="tags" multiple>
+          <option value="html">HTML</option>
+          <option value="css">CSS</option>
+          <option value="javascript">Javascript</option>
+          <option value="Ruby">Ruby</option>
+          <option value="Rails">Rails</option>
+          <option value="Python">Python</option>
+          <option value="Django">Django</option>
+        </select>
+      </dd>
+      <dt><label for="comment">Comments</label></dt>
+      <dd><textarea name="comment" id="comment" rows="10" cols="80"></textarea></dd>
+      <dt><input type="hidden" value="2016-12-06" /></dt>
+    </dl>
+    <input type="submit" value="Send"  />
+    <input type="reset" />
+  </fieldset>
+</form>
+</body>

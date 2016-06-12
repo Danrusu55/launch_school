@@ -1,0 +1,33 @@
+body {
+  font: normal 18px Helvetica, Arial, sans-serif;
+}
+fieldset {
+  width: 600px;
+  margin: 0 auto;
+  padding: 0;
+  border: none;
+  /*background: #cccccc;*/
+}
+dt {
+  margin: 0 0 5px 0;
+}
+dd {
+  margin: 0 0 25px 0;
+}
+input[type="text"],
+input[type="number"],
+input[type="email"] {
+  width: 100%;
+  height: 25px;
+  padding: 3px 10px;
+  font: normal 18px Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+}
+input[type="radio"] {
+  margin: 0 10px 0 25px;
+}
+
+textarea {
+  height: auto;
+  resize: vertical;
+}
