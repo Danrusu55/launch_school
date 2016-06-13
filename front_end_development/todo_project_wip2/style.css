@@ -1,0 +1,192 @@
+@import url("whitespace_reset.css");
+
+body {
+  font: normal 16px Helvetica, Arial, sans-serif;
+  letter-spacing: 0.07em;
+}
+#sidebar {
+  float: left;
+  left: 0;
+  width: 334px;
+  background: #464f77;
+  overflow: hidden;
+  color: #ffffff;
+  padding-bottom: 80px;
+  display: inline-block;
+}
+#sidebar header {
+  margin: 60px 0 0 0;
+}
+#sidebar header h1 {
+  font-weight: 100;
+  font-size: 18px;
+  display: inline;
+}
+#sidebar header dt {
+  display: inline;
+}
+#sidebar header img {
+  padding-right: 10px;
+  vertical-align: bottom;
+}
+#sidebar header .button {
+  margin-top: 8px;
+  border-radius: 40%;
+  padding: 2px 6px;
+}
+.button {
+  background: #6b7292;
+  color: #ccced8;
+  border-radius: 50%;
+  border: none;
+  font-size: 14px;
+  font-weight: 100;
+  padding: 1.5px 6px;
+  vertical-align: middle;
+  margin-top: 4px
+}
+#sidebar ul {
+  width: 100%;
+  margin: 0 30px 0 0px;
+  font-weight: 100;
+  font-size: 16px;
+}
+#sidebar li {
+  padding: 10px 0;
+  color: #ccced8;
+}
+#sidebar ul.completed {
+  text-decoration: line-through;
+  color: #ccced8;
+}
+#sidebar li.active {
+  color: #ffffff;
+  background: #383f5f;
+}
+#sidebar li.active .button {
+  background: #148fd5;
+}
+#sidebar dl {
+  display: inline-flex;
+}
+#sidebar dt {
+    padding: 5px;
+    margin-left: 135px;
+}
+#sidebar dd {
+  margin-left: 100px;
+}
+#sidebar header dt {
+  margin-left: 100px;
+}
+#sidebar header dd {
+  margin-left: 52px;
+}
+
+#todos {
+  max-width: 66%;
+  margin: 22px 0 0 33px;
+  overflow: hidden;
+  display: inline-block;
+  box-sizing: border-box;
+}
+#todos h1 {
+  font-size: 21px;
+  font-weight: 300;
+  margin: 35px 0 42px 0;
+}
+
+#todos .button.active {
+  background: #148fd5;
+  color: #ffffff;
+  margin-left: 20px;
+  margin-top: 1px;
+  vertical-align: top;
+}
+
+#todos h2 {
+  font-size: 16px;
+  font-weight: 200;
+  color: #148fd5;
+}
+#todos h2 img {
+  margin-right: 14px;
+}
+#todos ul {
+  margin-top: 16px;
+  font-size: 16px;
+  font-weight: 200;
+
+}
+#todos li {
+  border-top: 1px solid #e7e7e7;
+  padding: 18px 0;
+  width: 50vw;
+}
+#todos li:hover {
+  color: #148fd5;
+  cursor: pointer;
+}
+#todos .checkbox {
+  margin-right: 12px;
+}
+#todos .trash {
+
+}
+#todos .selected {
+  text-decoration: line-through;
+  color: #e7e7e7;
+}
+#todos dl {
+  display: inline-flex;;
+}
+#todos dd {
+  position: absolute;
+  float: right;
+  right: 100px;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+input#toggle[type="checkbox"] {
+  display: block;
+}
+#hamburger {
+  visibility: hidden;
+}
+input#toggle[type="checkbox"]:checked + div#sidebar {
+  display: none;
+}
+.add_todo {
+  display: none;
+}
+input:checked + .add_todo {
+  display: block;
+}
+.add_todo figure {
+  position: fixed;
+  left: 10vw;
+  top: 15%;
+  z-index: 2;
+}
+.add_todo:before {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  content: "";
+  background: rgba(0, 0, 0, .4);
+}
+
+/*@media (max-width: 768px) {
+  #hamburger {
+    visibility: visible;
+  }
+  #sidebar {
+    display: none;
+  }
+}*/

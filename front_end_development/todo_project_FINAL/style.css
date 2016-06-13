@@ -1,0 +1,288 @@
+@import url("whitespace_reset.css");
+
+body {
+  font: normal 16px Helvetica, Arial, sans-serif;
+  letter-spacing: 0.07em;
+  max-width: 1200px;
+}
+
+main {
+  max-width: 900px;
+  margin: 22px 0 0 33px;
+  overflow: hidden;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+main section {
+  max-width: 900px;
+}
+
+main h1 {
+  font-size: 21px;
+  font-weight: 300;
+  margin: 35px 0 42px 0;
+}
+
+main .button.active {
+  background: #148fd5;
+  color: #ffffff;
+  margin-left: 20px;
+  margin-top: 1px;
+  vertical-align: top;
+}
+
+main label {
+  font-size: 16px;
+  font-weight: 200;
+  color: #148fd5;
+}
+
+main label img {
+  margin-right: 12px;
+}
+
+main ul {
+  margin-top: 16px;
+  font-size: 16px;
+  font-weight: 200;
+  max-width: 900px;
+}
+
+main li {
+  border-top: 1px solid #e7e7e7;
+  padding: 18px 0;
+  width: 100%;
+}
+
+main li:hover {
+  color: #148fd5;
+  cursor: pointer;
+}
+
+main .checkbox {
+  margin-right: 12px;
+}
+
+main .selected {
+  text-decoration: line-through;
+  color: #e7e7e7;
+}
+
+main dl {
+  display: inline-flex;
+}
+
+main dd {
+  margin-left: 50vw;
+}
+
+nav {
+  float: left;
+  width: 334px;
+  background: #464f77;
+  overflow: hidden;
+  color: #ffffff;
+  padding-bottom: 80px;
+}
+
+nav header {
+  margin: 60px 0 0 0;
+}
+
+nav header dt {
+  font-weight: 100;
+  font-size: 18px;
+  display: inline;
+}
+
+nav header img {
+  padding-right: 10px;
+  vertical-align: bottom;
+}
+
+nav header .button {
+  margin-top: 8px;
+  border-radius: 40%;
+  padding: 2px 6px;
+}
+
+nav ul {
+  width: 100%;
+  margin: 0 30px 0 0px;
+  font-weight: 100;
+  font-size: 16px;
+}
+
+nav li {
+  padding: 10px 0;
+  color: #ccced8;
+}
+
+nav ul.completed {
+  text-decoration: line-through;
+  color: #ccced8;
+}
+
+nav li.active {
+  color: #ffffff;
+  background: #383f5f;
+}
+
+nav li.active .button {
+  background: #148fd5;
+}
+
+nav dl {
+  display: inline-flex;
+}
+
+nav dt {
+    padding: 5px;
+    margin-left: 135px;
+}
+
+nav dd {
+  margin-left: 100px;
+}
+
+nav header dt {
+  margin-left: 100px;
+}
+
+nav header dd {
+  margin-left: 52px;
+}
+
+.button {
+  background: #6b7292;
+  color: #ccced8;
+  border-radius: 50%;
+  border: none;
+  font-size: 14px;
+  font-weight: 100;
+  padding: 1.5px 6px;
+  vertical-align: middle;
+  margin-top: 4px
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+input#toggle[type="checkbox"] {
+  display: none;
+}
+
+#hamburger {
+  visibility: hidden;
+}
+
+#toggle:checked + nav {
+  display: inline-block;
+}
+
+.add_todo {
+  display: none;
+}
+
+#toggle2:checked + .add_todo {
+  display: block;
+}
+
+.add_todo img {
+  position: fixed;
+  left: 10vw;
+  top: 20%;
+  z-index: 2;
+}
+
+.add_todo:before {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  content: "";
+  background: rgba(0, 0, 0, .4);
+}
+
+@media (max-width: 970px) {
+  main dd {
+    margin-left: 40vw;
+  }
+}
+
+@media (max-width: 870px) {
+  main dd {
+    margin-left: 30vw;
+  }
+}
+
+@media (max-width: 768px) {
+  #hamburger {
+    visibility: visible;
+    position: relative;
+  }
+  nav {
+    display: none;
+  }
+}
+
+@media (max-width: 414px) {
+  nav {
+    width: 414px;
+  }
+  nav dt {
+    margin-left: 100px;
+  }
+  nav header dt {
+    margin-left: 65px;
+}
+  main {
+    width: 414px;
+    margin: 22px 0 0 25px;
+  }
+  main dd {
+    margin-left: 50vw;
+  }
+}
+
+@media (max-width: 375px) {
+  nav {
+    width: 375px;
+  }
+  nav dt {
+    margin-left: 100px;
+  }
+  nav header dt {
+    margin-left: 65px;
+}
+  main {
+    width: 375px;
+    margin: 22px 0 0 25px;
+  }
+  main dd {
+    margin-left: 50vw;
+  }
+}
+
+@media (max-width: 360px) {
+  nav {
+    width: 360px;
+  }
+  nav dt {
+    margin-left: 100px;
+  }
+  nav header dt {
+    margin-left: 65px;
+}
+  main {
+    width: 360px;
+    margin: 22px 0 0 25px;
+  }
+  main dd {
+    margin-left: 50vw;
+  }
+}
